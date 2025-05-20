@@ -16,10 +16,14 @@ It is an Android application that showcases best practices in UI design and mode
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="screenshots/screenshot1.jpg" width="250" alt="Main Screen"/>
-  <img src="screenshots/screenshot2.jpg" width="250" alt="Detail Screen"/>
-  <img src="screenshots/screenshot3.jpg" width="250" alt="Profile Screen"/>
+  <p>
+    <img src="screenshots/Screenshot 2025-05-20 112232.png" width="250" alt="Profile Screen" />
+  </p>
+  <img src="screenshots/Screenshot 2025-05-20 111915.png" width="450" height="320" alt="Main Screen"/> <img src="screenshots/Screenshot 2025-05-20 111954.png" width="450" height="320" alt="Detail Screen"/>
+  <img src="screenshots/Screenshot 2025-05-20 112011.png" width="450" height="320" alt="Profile Screen"/> <img src="screenshots/Screenshot 2025-05-20 112029.png" width="450" height="320" alt="Profile Screen"/>
+  <img src="screenshots/Screenshot 2025-05-20 112046.png" width="450" height="320" alt="Profile Screen"/> <img src="screenshots/Screenshot 2025-05-20 112327.png" width="450" height="320" alt="Profile Screen"/>
 </div>
+
 
 ## 🛠️ Technical Implementation
 
@@ -30,14 +34,13 @@ The app utilizes several key libraries:
 ```gradle
 dependencies {
     // CircleImageView for rounded profile images
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation("de.hdodenhof:circleimageview:3.1.0")
     
     // Other dependencies
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    // Add other dependencies here
+    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 }
 ```
 
@@ -56,14 +59,12 @@ android {
 // In your Activity/Fragment
 private lateinit var binding: ActivityMainBinding
 
-override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-    
-    // Now you can access views directly through binding
-    binding.yourViewModel = viewModel
-    binding.lifecycleOwner = this
-}
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
 ```
 
 ### Layout Structure
@@ -75,50 +76,38 @@ The app implements a hierarchical layout structure:
 3. Multiple **ConstraintLayout** containers as children of the LinearLayout
 
 ```xml
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+[NOTE: It a demo code for reference, not the actual code used in the assignment]
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:background="#161616"
+    tools:context=".MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- First ConstraintLayout child -->
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
-
-            <!-- CircleImageView implementation -->
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:src="@drawable/profile"
-                app:civ_border_width="2dp"
-                app:civ_border_color="#FF000000"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <!-- Other views within this ConstraintLayout -->
-            
+            android:paddingVertical="24dp"
+            app:layout_constraintTop_toTopOf="parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/supportCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="#333333"
+                app:cardCornerRadius="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Second ConstraintLayout child -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
-            
-            <!-- Content for second section -->
-            
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Additional ConstraintLayout children as needed -->
-        
     </LinearLayout>
 </ScrollView>
 ```
@@ -144,28 +133,9 @@ git clone https://github.com/yourusername/your-app-name.git
 
 4. Run the app on an emulator or physical device
 
-## 📋 To-Do
-
-- [ ] Add feature X
-- [ ] Improve UI for screen Y
-- [ ] Fix bug Z
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📞 Contact
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
-
-Project Link: [https://github.com/yourusername/your-app-name](https://github.com/yourusername/your-app-name)
+- Your Name - Rishi2705 
+- email@rishiarora2705@gmail.com
+- Project Link: [https://github.com/yourusername/your-app-name](https://github.com/Rishi2705/AndazKumarAssignment)
